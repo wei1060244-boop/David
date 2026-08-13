@@ -277,7 +277,7 @@ nav{display:flex;align-items:center;gap:26px;font-size:13px;font-weight:600}nav 
 /* Restore the original round character, without its mouth or caption. */
 .folder-character small,.character-smile{display:none}
 
-.company-field{margin:22px 0 0;color:#ff4e55;font-size:22px;line-height:1.25;letter-spacing:.02em}
+.company-field{margin:22px 0 0;color:#ff4e55;font-size:22px;line-height:1.25;letter-spacing:.12em}
 @media (max-width:800px){.job-meta{display:flex;align-items:baseline;gap:16px}.company-field{margin:0;font-size:17px}}
 
 /* Static contact details should keep the button styling without acting interactive. */
