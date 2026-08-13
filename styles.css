@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap');
+@font-face{font-family:"Liquid Rounded";src:url("assets/fonts/comic-bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+
+:root{--paper:#050505;--surface:#0b0b0d;--surface-soft:#111216;--ink:#f5f5f2;--muted:#9a9a96;--line:rgba(255,255,255,.15);--acid:#d8ff3e;--cyan:#38f5ff;--blue:#735cff;--magenta:#ff1abf;--shadow:0 30px 70px rgba(0,0,0,.5)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans SC",sans-serif;overflow-x:hidden}
+button,a{color:inherit;font:inherit}
+button{cursor:pointer}
+img{display:block;max-width:100%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.cursor-orb{position:fixed;z-index:100;width:18px;height:18px;border:1px solid rgba(255,255,255,.58);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;mix-blend-mode:difference}
+.cursor-orb.active{width:54px;height:54px;background:rgba(216,255,62,.58);border-color:transparent}
+.site-header{position:absolute;z-index:50;top:0;left:0;width:100%;padding:28px 4vw;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em}
+.brand-mark{display:grid;place-items:center;width:34px;height:34px;background:var(--ink);color:#090909;border-radius:50%;font-size:10px;letter-spacing:0}
+nav{display:flex;align-items:center;gap:26px;font-size:13px;font-weight:600}nav a{text-decoration:none}.nav-pill{padding:10px 18px;border:1px solid var(--ink);border-radius:99px}
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;padding:100px 20px 60px;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:-20%;z-index:-2;background:radial-gradient(circle at 50% 48%,rgba(79,214,229,.16),transparent 27%),radial-gradient(circle at 20% 70%,rgba(216,255,62,.14),transparent 22%)}
+.hero-kicker{position:absolute;top:116px;margin:0;font-size:10px;letter-spacing:.23em;color:var(--muted)}
+.welcome{position:absolute;z-index:-1;top:50%;left:50%;width:min(92vw,1420px);transform:translate(-50%,-52%);user-select:none;pointer-events:none;opacity:.72;mix-blend-mode:screen;filter:drop-shadow(0 0 18px rgba(82,88,255,.22))}
+.welcome img{width:100%;height:auto;display:block;object-fit:contain}
+@keyframes liquid-flow{0%{background-position:0 50%;filter:drop-shadow(-7px 0 10px rgba(255,0,164,.62)) drop-shadow(8px 0 12px rgba(0,231,255,.64)) drop-shadow(0 0 28px rgba(132,42,255,.42))}100%{background-position:100% 50%;filter:drop-shadow(-9px 0 13px rgba(0,239,255,.58)) drop-shadow(9px 0 15px rgba(255,0,133,.66)) drop-shadow(0 0 32px rgba(200,255,38,.3))}}
+.portfolio-stage{position:relative;width:min(720px,92vw);height:min(560px,74vw);min-height:430px;perspective:1450px;transform:scale(var(--stage-scale,1)) rotateY(var(--stage-ry,0deg)) rotateX(var(--stage-rx,0deg));transform-style:preserve-3d;transition:transform .2s ease-out;will-change:transform}
+.card-slot{position:absolute;z-index:4;left:50%;bottom:155px;width:250px;height:166.667px;aspect-ratio:3/2;transform-origin:50% 118%;transform-style:preserve-3d;transition:transform 1.05s cubic-bezier(.16,.84,.18,1),filter .45s;will-change:transform}
+.project-card{position:relative;width:100%;height:100%;padding:0;border:0;border-radius:20px;background:#101114;box-shadow:0 30px 90px rgba(70,64,255,.13),0 14px 56px rgba(26,207,255,.085),0 4px 24px rgba(0,0,0,.09);transform-style:preserve-3d;animation:card-breathe 4.6s ease-in-out infinite;transition:filter .4s,box-shadow .4s;will-change:transform}
+.project-card:before{content:"";position:absolute;z-index:-1;inset:4px -6px -7px 6px;border-radius:20px;background:linear-gradient(145deg,#383b42,#15171c 58%,#08090a);box-shadow:inset -1px -1px rgba(255,255,255,.12),0 20px 65px rgba(72,56,255,.09);transform:translateZ(-13px)}
+.project-card img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:20px;transition:transform .5s;transform:translateZ(2px)}.project-card:after{content:"";position:absolute;z-index:2;inset:0;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.15),transparent 22%,transparent 66%,rgba(0,0,0,.5));box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}.card-meta{position:absolute;z-index:3;left:15px;bottom:13px;display:flex;align-items:center;gap:9px;color:white;font-size:11px;letter-spacing:.08em;text-shadow:0 2px 6px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.55);transform:translateZ(9px)}.card-meta b{font-size:12px;text-shadow:inherit}
+.card-1{z-index:3;transform:translate3d(-184px,110px,-72px) rotateZ(-4deg) rotateY(3.5deg)}.card-2{z-index:4;transform:translate3d(-156px,102px,-34px) rotateZ(-1.5deg) rotateY(1.8deg)}.card-3{z-index:5;transform:translate3d(-128px,94px,2px) rotateZ(1.5deg) rotateY(-1.5deg)}.card-4{z-index:6;transform:translate3d(-100px,86px,36px) rotateZ(3.5deg) rotateY(-2.8deg)}
+.portfolio-stage.expanded .card-1,.portfolio-stage.fanned .card-1{transform:translate3d(-324px,-42px,-42px) rotateZ(-8deg) rotateY(6deg) rotateX(1deg)}.portfolio-stage.expanded .card-2,.portfolio-stage.fanned .card-2{transform:translate3d(-190px,-92px,2px) rotateZ(-3deg) rotateY(2.5deg) rotateX(.5deg)}.portfolio-stage.expanded .card-3,.portfolio-stage.fanned .card-3{transform:translate3d(-56px,-94px,42px) rotateZ(3deg) rotateY(-2.5deg) rotateX(.5deg)}.portfolio-stage.expanded .card-4,.portfolio-stage.fanned .card-4{transform:translate3d(78px,-42px,76px) rotateZ(8deg) rotateY(-6deg) rotateX(1deg)}
+.card-slot:nth-child(2) .project-card{animation-delay:-1.1s}.card-slot:nth-child(3) .project-card{animation-delay:-2.2s}.card-slot:nth-child(4) .project-card{animation-delay:-3.3s}.card-slot:hover{z-index:7;filter:saturate(1.12) brightness(1.04)}.project-card:hover{box-shadow:0 36px 100px rgba(70,64,255,.16),0 16px 65px rgba(26,207,255,.1)}.project-card:hover img{transform:translateZ(10px) scale(1.025)}
+@keyframes card-breathe{0%,100%{transform:translate3d(0,0,0) rotateX(0)}50%{transform:translate3d(0,-9px,13px) rotateX(1.2deg)}}
+.folder-back-layer{position:absolute;z-index:2;left:50%;bottom:35px;width:350px;height:188px;border-radius:24px 24px 18px 18px;background:linear-gradient(145deg,#65ddea,#3abbd0);box-shadow:inset 0 1px rgba(255,255,255,.64),inset 0 -10px 25px rgba(0,76,99,.11);transform:translate3d(-50%,0,-12px)}.folder-tab{position:absolute;z-index:2;top:-18px;left:20px;width:138px;height:73px;border-radius:24px 24px 0 0;background:linear-gradient(145deg,#65ddea,#4bc9da);box-shadow:inset 0 1px rgba(255,255,255,.62)}.folder-tab:after{content:"";position:absolute;left:0;right:-8px;bottom:-10px;height:20px;background:#54ccdc}.folder{position:absolute;z-index:9;left:50%;bottom:35px;width:350px;height:215px;transform:translate3d(-50%,0,125px);filter:drop-shadow(0 24px 46px rgba(50,58,255,.095));transform-style:preserve-3d;animation:folder-breathe 5.2s ease-in-out infinite}.folder-face{position:absolute;z-index:10;left:0;right:0;top:61px;bottom:0;border:1px solid rgba(255,255,255,.58);border-radius:24px;background:linear-gradient(145deg,rgba(171,240,246,.72),rgba(39,177,205,.68));box-shadow:inset 0 1px rgba(255,255,255,.95),inset 0 -16px 34px rgba(0,76,103,.12),0 14px 42px rgba(62,67,255,.07);backdrop-filter:blur(22px) saturate(1.08);-webkit-backdrop-filter:blur(22px) saturate(1.08);transform:translateZ(24px);transform-style:preserve-3d}.folder-face:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(112deg,rgba(255,255,255,.48),rgba(255,255,255,.16) 38%,transparent 67%,rgba(34,244,255,.14));pointer-events:none}
+.folder-character{position:absolute;z-index:3;top:18px;left:25px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 34% 27%,#fff67b 0 10%,#dfff40 46%,#a4d917 100%);border:3px solid white;box-shadow:0 7px 15px rgba(0,0,0,.13),inset 0 -5px 10px rgba(76,117,0,.2);transform:translateZ(18px) rotate(-7deg);display:flex;justify-content:center;gap:6px;padding-top:18px}.folder-character:before{content:"";position:absolute;inset:5px;border:1px dashed rgba(10,25,0,.33);border-radius:50%}.folder-character small{position:absolute;bottom:7px;font-size:4.2px;font-weight:900;letter-spacing:.08em;color:#263600}.character-eye{position:relative;z-index:2;width:18px;height:22px;border-radius:50%;background:white;box-shadow:0 1px 3px rgba(0,0,0,.24)}.eye-pupil{position:absolute;left:5px;top:7px;width:9px;height:11px;border-radius:50%;background:#101010;transform:translate(var(--eye-x,0),var(--eye-y,0));transition:transform .08s linear}.eye-pupil:after{content:"";position:absolute;width:3px;height:3px;left:1px;top:1px;border-radius:50%;background:white}.character-smile{position:absolute;z-index:2;left:28px;top:45px;width:14px;height:7px;border-bottom:2px solid #273300;border-radius:0 0 50% 50%}.folder-sticker{position:absolute;z-index:3;right:75px;top:24px;font-size:9px;line-height:1.05;text-align:center;font-weight:900;color:#111;background:rgba(255,255,255,.9);padding:9px 7px;transform:translateZ(10px) rotate(10deg);clip-path:polygon(8% 0,100% 10%,90% 100%,0 87%)}.folder-label{position:absolute;z-index:3;left:28px;bottom:22px;color:white;transform:translateZ(9px)}.folder-label strong{display:block;font-size:17px}.folder-label small{opacity:.76}.folder-arrow{position:absolute;z-index:3;right:21px;bottom:22px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.88);color:#111;font-size:19px;transform:translateZ(12px)}
+@keyframes folder-breathe{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.hero-note{position:absolute;bottom:73px;margin:0;font-size:11px;color:var(--muted)}.scroll-cue{position:absolute;right:4vw;bottom:34px;text-decoration:none;font-size:9px;letter-spacing:.18em;display:flex;gap:10px;align-items:center}.scroll-cue span{width:35px;height:1px;background:var(--ink)}
+.intro{padding:130px 6vw;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 4fr;gap:30px}.section-index,.eyebrow{font-size:10px;letter-spacing:.2em;color:var(--muted)}.intro-copy>p{font-size:clamp(32px,4.3vw,68px);line-height:1.15;letter-spacing:-.045em;max-width:1160px;margin:0}.intro-summary{margin-top:42px;display:grid;grid-template-columns:1.45fr 1fr;gap:50px;max-width:1080px;padding-top:30px;border-top:1px solid var(--line)}.intro-summary>p{margin:0;color:#c2c2be;font-size:14px;line-height:1.85;letter-spacing:0}.career-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.career-facts span{min-height:74px;padding:15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025);font-size:13px;display:flex;flex-direction:column;justify-content:space-between}.career-facts small{color:var(--muted);font-size:9px;letter-spacing:.12em}.career-facts .salary{border-color:rgba(216,255,62,.34);color:#e7ff91;background:rgba(216,255,62,.055)}.career-facts .achievement-slot{border-style:dashed;color:var(--muted)}.intro-aside{margin-top:46px;display:flex;gap:10px;flex-wrap:wrap}.intro-aside span{border:1px solid var(--line);border-radius:99px;padding:9px 16px;font-size:12px}
+.intro-profile{margin-top:55px;display:flex;align-items:center;gap:22px}.intro-profile img{width:96px;height:120px;object-fit:cover;object-position:center 35%;border-radius:18px;filter:none;box-shadow:0 14px 34px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.52)}.intro-profile div{display:flex;flex-direction:column;gap:4px}.intro-profile strong{font-size:18px}.intro-profile span{font-size:12px;color:var(--muted)}
+.work{padding:120px 6vw;background:#151515;color:#f4f2ed}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:75px}.section-heading h2{font-size:clamp(44px,6vw,92px);line-height:1.02;letter-spacing:-.06em;margin:15px 0 0}.section-note{max-width:350px;color:#a6a6a0;line-height:1.65;font-size:14px}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px 22px}.work-item{cursor:pointer}.work-item.wide{grid-column:span 2}.work-image{height:min(36vw,570px);overflow:hidden;background:#222}.work-item:not(.wide) .work-image{height:min(46vw,650px)}.work-image img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,.8,.2,1),filter .4s}.work-item:hover img{transform:scale(1.035);filter:saturate(1.08)}.work-info{display:grid;grid-template-columns:1.2fr 2fr auto;gap:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);margin-top:12px}.work-info span{font-size:10px;letter-spacing:.14em;color:#aaa}.work-info h3{font-size:22px;margin:0}.work-info p{font-size:13px;line-height:1.6;color:#aaa;margin:0;max-width:380px}.work-info button{border:0;background:none;color:white;font-size:10px;letter-spacing:.12em;padding:0;align-self:start}
+.work-image.light{background:#eee}.original-grid .work-item.wide .work-image{height:min(46vw,700px)}.original-grid .work-item.wide:first-child .work-image img{object-fit:contain;background:#08090b}.original-grid .work-item:not(.wide) .work-image img{object-fit:contain}.original-grid .work-item:nth-child(3) .work-image img{object-fit:cover}
+.final-four-grid .work-image,.final-four-grid .work-item.wide .work-image{height:auto;aspect-ratio:16/9;background:#f7f7f7}.final-four-grid .work-image img,.final-four-grid .work-item.wide:first-child .work-image img{object-fit:contain;background:#f7f7f7}
+.resume{padding:130px 6vw;background:var(--surface)}.resume-head{display:grid;grid-template-columns:1fr 3fr 1.2fr;gap:35px;align-items:start;padding-bottom:80px;border-bottom:1px solid var(--line)}.resume-head h2{font-size:clamp(48px,6.4vw,100px);line-height:.98;letter-spacing:.045em;margin:0}.resume-contact{display:flex;flex-direction:column;gap:10px;font-size:13px}.resume-contact a{text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:5px;align-self:flex-start}.resume-contact span{color:var(--muted);margin-top:8px}.resume-layout{display:grid;grid-template-columns:1fr 3fr;gap:70px;padding-top:75px}.resume-side{display:flex;flex-direction:column;gap:48px}.resume-side h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:12px}.resume-side p{font-size:13px;line-height:1.7;color:var(--muted)}.timeline{border-top:1px solid var(--ink)}.job{display:grid;grid-template-columns:180px 1fr;gap:25px;padding:36px 0;border-bottom:1px solid var(--line)}.job-date{font-size:11px;letter-spacing:.08em;color:var(--muted)}.job h3{font-size:24px;margin:0}.job-role{margin:8px 0 18px;font-size:12px;font-weight:700}.job div>p:last-child,.job .job-description{font-size:13px;line-height:1.75;color:var(--muted);max-width:760px}.job .achievement{color:#e7ff90;background:rgba(216,255,62,.11);border:1px solid rgba(216,255,62,.28);padding:12px 15px;margin-top:16px}
+.capabilities{padding:125px 6vw}.cap-list{margin-top:48px;border-top:1px solid var(--line)}.cap-row{display:grid;grid-template-columns:80px 1.7fr 1fr;align-items:center;padding:34px 0;border-bottom:1px solid var(--line)}.cap-row span{font-size:11px}.cap-row h3{font-size:clamp(25px,3vw,44px);letter-spacing:-.035em;margin:0}.cap-row p{margin:0;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.contact{min-height:82vh;padding:110px 6vw 40px;background:#020202;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}.contact:before{content:"";position:absolute;width:65vw;height:65vw;right:-24vw;top:-33vw;border-radius:50%;background:radial-gradient(circle,rgba(255,0,184,.22),rgba(63,245,255,.1) 32%,transparent 69%);filter:blur(22px);pointer-events:none}.contact h2{font-size:clamp(55px,9.5vw,150px);line-height:.92;letter-spacing:-.075em;margin:24px 0 55px;max-width:1300px}.contact-actions{display:flex;gap:12px;flex-wrap:wrap}.contact-btn{align-self:flex-start;border:1px solid rgba(255,255,255,.52);background:rgba(255,255,255,.04);border-radius:99px;padding:17px 24px;display:flex;gap:28px;align-items:center;text-decoration:none;backdrop-filter:blur(14px);transition:background .25s,color .25s,border-color .25s}.contact-btn:hover{background:var(--ink);color:#050505;border-color:var(--ink)}.contact-btn span{font-size:19px}.contact-footer{position:absolute;left:6vw;right:6vw;bottom:28px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.14em}
+.project-modal{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:#111;color:white;overflow:auto}.project-modal::backdrop{background:#111}.modal-shell{min-height:100%;padding:32px 4vw 50px}.modal-header{display:flex;justify-content:space-between;align-items:start;border-bottom:1px solid #444;padding-bottom:22px}.modal-header p{font-size:10px;letter-spacing:.18em;color:#999}.modal-header h2{font-size:clamp(34px,5vw,72px);letter-spacing:-.05em;margin:10px 0 0}.modal-close{position:sticky;top:20px;width:48px;height:48px;border-radius:50%;border:1px solid #777;background:transparent;color:white;font-size:30px}.modal-meta{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:32px 0}.modal-meta p{max-width:630px;line-height:1.7;color:#aaa}.modal-meta div{display:flex;justify-content:flex-end;align-items:start;gap:8px;flex-wrap:wrap}.modal-meta span{padding:8px 12px;border:1px solid #444;border-radius:99px;font-size:10px}.modal-gallery{display:grid;gap:18px}.modal-gallery figure{margin:0;background:#eee;display:grid;place-items:center;overflow:hidden}.modal-gallery img{width:100%;height:auto;object-fit:contain}.modal-gallery figure:has(img[src*="car-detail"]),.modal-gallery figure:has(img[src*="water-detail"]){background:#161616;padding:34px}.modal-gallery img[src*="car-detail"],.modal-gallery img[src*="water-detail"]{width:min(680px,100%)}.modal-footer{display:flex;justify-content:space-between;padding:28px 0;color:#999;font-size:10px;letter-spacing:.1em}.modal-footer button{border:0;background:none;color:white;letter-spacing:.1em}.reveal{opacity:0;transform:translateY(35px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,.8,.2,1)}.reveal.visible{opacity:1;transform:none}
+@media (max-width:800px){.cursor-orb{display:none}.site-header{padding:20px}.brand-text{display:none}nav{gap:12px;font-size:11px}.nav-pill{padding:8px 12px}.hero-kicker{top:95px}.portfolio-stage{--stage-scale:.67;height:500px;width:760px}.portfolio-stage.expanded .card-1,.portfolio-stage.fanned .card-1{transform:translate3d(-360px,-16px,-50px) rotateZ(-12deg) rotateY(9deg)}.portfolio-stage.expanded .card-2,.portfolio-stage.fanned .card-2{transform:translate3d(-211px,-86px,5px) rotateZ(-4deg) rotateY(4deg)}.portfolio-stage.expanded .card-3,.portfolio-stage.fanned .card-3{transform:translate3d(-29px,-91px,55px) rotateZ(4deg) rotateY(-4deg)}.portfolio-stage.expanded .card-4,.portfolio-stage.fanned .card-4{transform:translate3d(121px,-20px,95px) rotateZ(11deg) rotateY(-9deg)}.welcome{font-size:28vw}.hero-note{bottom:50px}.scroll-cue{display:none}.intro{padding:90px 22px;grid-template-columns:1fr}.intro-copy>p{font-size:37px}.intro-summary{grid-template-columns:1fr;gap:26px}.career-facts{grid-template-columns:1fr 1fr}.work{padding:90px 20px}.section-heading{display:block}.section-note{margin-top:30px}.work-grid{grid-template-columns:1fr;gap:60px}.work-item.wide{grid-column:auto}.work-image,.work-item:not(.wide) .work-image,.original-grid .work-item.wide .work-image{height:72vw}.work-info{grid-template-columns:1fr}.work-info button{text-align:left}.resume{padding:90px 22px}.resume-head{grid-template-columns:1fr;padding-bottom:50px}.resume-layout{grid-template-columns:1fr;gap:50px}.job{grid-template-columns:1fr;gap:10px}.job h3{font-size:20px}.capabilities{padding:90px 22px}.cap-row{grid-template-columns:45px 1fr}.cap-row p{grid-column:2;margin-top:10px}.contact{padding:80px 22px}.contact h2{font-size:16vw}.contact-footer{left:22px;right:22px}.contact-footer span:nth-child(2){display:none}.modal-shell{padding:22px 16px 40px}.modal-meta{grid-template-columns:1fr}.modal-meta div{justify-content:flex-start}.modal-gallery figure:has(img[src*="car-detail"]),.modal-gallery figure:has(img[src*="water-detail"]){padding:15px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Front pocket: a denser, softly diffused frosted-glass finish. */
+.folder-face{
+  overflow:hidden;
+  isolation:isolate;
+  border-color:rgba(245,255,255,.72);
+  background:
+    linear-gradient(142deg,rgba(246,255,255,.52) 0%,rgba(201,246,249,.48) 26%,rgba(103,210,222,.65) 66%,rgba(46,173,197,.70) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 10px 20px rgba(255,255,255,.14),
+    inset 0 -22px 40px rgba(0,81,108,.19),
+    0 16px 44px rgba(36,72,110,.08);
+  backdrop-filter:blur(32px) saturate(.88) brightness(1.12);
+  -webkit-backdrop-filter:blur(32px) saturate(.88) brightness(1.12);
+}
+.folder-face:before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:0;
+  border-radius:inherit;
+  background:
+    radial-gradient(circle at 19% 18%,rgba(255,255,255,.36) 0 1px,transparent 1.6px) 0 0/7px 7px,
+    linear-gradient(108deg,rgba(255,255,255,.26),transparent 37%,rgba(255,255,255,.08) 69%,rgba(255,255,255,.20));
+  opacity:.42;
+  mix-blend-mode:soft-light;
+  pointer-events:none;
+}
+.folder-face:after{
+  background:linear-gradient(112deg,rgba(255,255,255,.43),rgba(255,255,255,.13) 35%,transparent 66%,rgba(183,250,255,.16));
+}
+
+/* Keep the rear layer visually continuous where its tab meets the folder body. */
+.folder-back-layer{
+  --folder-back-surface:linear-gradient(145deg,#69dfeb 0%,#55cfdf 43%,#39b8d0 100%);
+  bottom:29px;
+  height:203px;
+  overflow:visible;
+  border-radius:27px 27px 20px 20px;
+  background:var(--folder-back-surface);
+  box-shadow:inset 0 1px rgba(255,255,255,.66),inset 0 -12px 28px rgba(0,76,99,.12);
+}
+.folder-tab{
+  top:-24px;
+  left:18px;
+  width:150px;
+  height:84px;
+  border-radius:27px 27px 0 0;
+  background:var(--folder-back-surface);
+  box-shadow:inset 0 1px rgba(255,255,255,.64);
+}
+.folder-tab:after{display:none}
+
+/* Overlap the two folder layers so their joint reads as one continuous folder. */
+.folder-back-layer{bottom:24px}
+.folder-face{top:55px}
+
+/* Make the frosted front and rear body read as one joined folder, not two panels. */
+.folder-face{
+  top:0;
+  border-radius:27px 27px 20px 20px;
+  background:
+    linear-gradient(142deg,rgba(234,253,255,.46) 0%,rgba(177,239,245,.49) 30%,rgba(90,203,218,.66) 68%,rgba(48,177,200,.71) 100%);
+}
+.folder-character{top:73px}
+.folder-sticker{top:66px;font-size:12px;font-weight:600;letter-spacing:.08em}
+.folder-tab{top:-43px;height:96px}
+
+/* Integrate the rear tab into the front pocket silhouette. */
+.folder-back-layer{height:188px;bottom:24px}
+.folder-tab{display:none}
+
+/* Solid blue file body sits at the deepest layer of the folder. */
+.folder-back-layer{
+  z-index:1;
+  transform:translate3d(-50%,0,-72px);
+}
+
+/* Front pocket: approximately 40% visual opacity while keeping the frosted finish. */
+.folder-face{
+  background:linear-gradient(142deg,rgba(234,253,255,.60) 0%,rgba(177,239,245,.65) 30%,rgba(90,203,218,.78) 68%,rgba(48,177,200,.82) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.92),inset 0 10px 20px rgba(255,255,255,.15),inset 0 -22px 40px rgba(0,81,108,.19),0 16px 44px rgba(36,72,110,.08);
+}
+.folder-face:before{opacity:.43}
+.folder-face:after{background:linear-gradient(112deg,rgba(255,255,255,.45),rgba(255,255,255,.15) 35%,transparent 66%,rgba(183,250,255,.16))}
+.folder-face{
+  overflow:visible;
+  clip-path:none;
+}
+.folder-face:before,.folder-face:after{clip-path:none}
+.folder-back-layer{
+  overflow:visible;
+  clip-path:polygon(0 0,39% 0,45% 12%,100% 12%,100% 100%,0 100%);
+}
+
+/* The solid rear layer owns the tab silhouette; the front remains a simple glass pocket. */
+.folder-back-layer{bottom:35px;height:215px;border-radius:27px 27px 20px 20px}
+.folder-face{top:55px;overflow:hidden;border-radius:24px 24px 20px 20px;clip-path:none}
+.folder-face:before,.folder-face:after{clip-path:none}
+
+/* Place the character directly above the name, aligned as one identity block. */
+.folder-character{left:28px;top:16px}
+.folder-label{left:28px;top:92px;bottom:auto}
+
+/* Identity text always sits above the cards, in clean white. */
+.folder-label{z-index:30;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.38)}
+.folder-label small{opacity:1;color:#fff}
+
+/* Keep the catalog card inside the folder stack rather than in front of the folder. */
+.card-1{z-index:3}
+.card-1:hover{z-index:7}
+
+/* Stored state: keep all four projects as one compact stack inside the folder. */
+/* Stored order, left to right: catalog, visual, exhibition, detail. */
+.card-1,.card-2,.card-3,.card-4{z-index:3}
+.card-1:hover,.card-2:hover,.card-3:hover,.card-4:hover{z-index:7}
+.portfolio-stage:not(.expanded):not(.fanned) .card-1{z-index:3;transform:translate3d(-150px,112px,-36px) rotateZ(-2.1deg) rotateY(1.5deg)}
+.portfolio-stage:not(.expanded):not(.fanned) .card-2{z-index:4;transform:translate3d(-133px,109px,-12px) rotateZ(-.7deg) rotateY(.5deg)}
+.portfolio-stage:not(.expanded):not(.fanned) .card-3{z-index:5;transform:translate3d(-116px,106px,12px) rotateZ(.7deg) rotateY(-.5deg)}
+.portfolio-stage:not(.expanded):not(.fanned) .card-4{z-index:6;transform:translate3d(-99px,103px,36px) rotateZ(2.1deg) rotateY(-1.5deg)}
+
+/* Restore the original rear-folder outline, before the rounded-corner adjustment. */
+.folder-back-layer{
+  overflow:visible;
+  clip-path:polygon(0 0,39% 0,45% 12%,100% 12%,100% 100%,0 100%);
+}
+.folder-tab{display:none}
+
+/* Exhibition card: keep the card clean without a cast shadow. */
+.card-3 .project-card,.card-3 .project-card:hover{box-shadow:none}
+.card-3 .project-card:before{box-shadow:none}
+.card-4 .project-card,.card-4 .project-card:hover{box-shadow:none}
+.card-4 .project-card:before{box-shadow:none}
+.card-2 .project-card,.card-2 .project-card:hover{box-shadow:none}
+.card-2 .project-card:before{box-shadow:none}
+.card-1 .project-card,.card-1 .project-card:hover{box-shadow:none}
+.card-1 .project-card:before{box-shadow:none}
+
+/* Remove the dark depth backing from every project card. */
+.project-card:before{display:none}
+
+/* A subtle, soft outer lift for all four cards — without restoring the dark backing. */
+.card-1 .project-card,.card-2 .project-card,.card-3 .project-card,.card-4 .project-card,
+.card-1 .project-card:hover,.card-2 .project-card:hover,.card-3 .project-card:hover,.card-4 .project-card:hover{
+  box-shadow:0 13px 34px rgba(3,11,21,.18),0 3px 11px rgba(0,0,0,.10);
+}
+
+/* Add a soft surface light; when fanned out, each card gets a deeper floating shadow. */
+.project-card:after{
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,255,255,.30) 0,rgba(255,255,255,.10) 15%,transparent 39%),
+    linear-gradient(145deg,rgba(255,255,255,.13),transparent 24%,transparent 66%,rgba(0,0,0,.42));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.17),inset 0 1px 10px rgba(255,255,255,.06);
+}
+.portfolio-stage.expanded .project-card,.portfolio-stage.fanned .project-card{
+  box-shadow:0 34px 78px rgba(1,8,20,.27),0 13px 34px rgba(0,0,0,.18),0 0 28px rgba(51,212,255,.08);
+}
+
+/* A selected card gently grows as one complete object. */
+.project-card{transition:scale .3s cubic-bezier(.16,.8,.2,1),filter .4s,box-shadow .4s}
+.card-slot:hover .project-card{scale:1.055}
+
+/* Once opened, the folder front should not intercept clicks meant for project cards. */
+.portfolio-stage.expanded .folder,.portfolio-stage.fanned .folder{pointer-events:none}
+.portfolio-stage.expanded .card-slot,.portfolio-stage.fanned .card-slot{pointer-events:auto}
+
+/* Reference fan order, left to right: catalog → mixed → exhibition → detail. */
+.portfolio-stage.expanded .card-1,.portfolio-stage.fanned .card-1{
+  z-index:3;
+  pointer-events:auto;
+  transform:translate3d(-324px,-42px,-42px) rotateZ(-8deg) rotateY(6deg) rotateX(1deg);
+}
+.portfolio-stage.expanded .card-1 .project-card,.portfolio-stage.fanned .card-1 .project-card{
+  pointer-events:auto;
+  cursor:pointer;
+}
+@media (max-width:800px){
+  .portfolio-stage.expanded .card-1,.portfolio-stage.fanned .card-1{transform:translate3d(-360px,-16px,-50px) rotateZ(-12deg) rotateY(9deg)}
+}
+.portfolio-stage.expanded .card-1:hover,.portfolio-stage.fanned .card-1:hover{z-index:7}
+.portfolio-stage.expanded .card-1.is-targeted,.portfolio-stage.fanned .card-1.is-targeted{z-index:7}
+.portfolio-stage.expanded .card-1.is-targeted .project-card,.portfolio-stage.fanned .card-1.is-targeted .project-card{scale:1.055;filter:saturate(1.12) brightness(1.04)}
+
+/* A calmer, more spacious closing message. */
+.contact h2{
+  font-size:clamp(48px,7.2vw,112px);
+  letter-spacing:.035em;
+  line-height:1.08;
+}
+
+/* Keep the original achievement-card appearance while retaining its link. */
+.career-facts a.achievement-slot{
+  display:flex;
+  min-height:74px;
+  padding:15px;
+  font-size:13px;
+  flex-direction:column;
+  justify-content:space-between;
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
+  border-style:solid;
+  border-color:var(--line);
+  background:rgba(255,255,255,.025);
+}
+.career-facts a.achievement-slot small{color:var(--muted);font-size:9px;letter-spacing:.12em}
+
+/* Achievement card: a cleaner rounded rectangle with a finer outline. */
+.career-facts a.achievement-slot{
+  border-width:.75px;
+  border-radius:12px;
+}
+
+
+/* Project cards show titles only. */
+.card-meta b{display:none}
+.card-meta{gap:0}
+
+/* Skill details now live in the About Skills section. */
+.intro-profile img{border-radius:7px}
+.skill-groups{display:grid;grid-template-columns:1.35fr 1fr;gap:12px;max-width:1080px;margin-top:14px}
+.skill-groups>div{padding:18px 19px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+.skill-groups small{display:block;margin-bottom:13px;font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.skill-groups p{margin:0 0 8px;color:#d2d2cf;font-size:13px;line-height:1.6}
+.skill-groups p:last-child{margin-bottom:0}
+@media (max-width:800px){.skill-groups{grid-template-columns:1fr}.skill-groups>div{padding:16px}}
+
+/* Restore the original round character, without its mouth or caption. */
+.folder-character small,.character-smile{display:none}

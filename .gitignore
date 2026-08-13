@@ -1,0 +1,9 @@
+# System and editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Deployment and local build artifacts
+.netlify/
+.vercel/
+node_modules/
