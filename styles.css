@@ -283,3 +283,4 @@ nav{display:flex;align-items:center;gap:26px;font-size:13px;font-weight:600}nav 
 /* Static contact details should keep the button styling without acting interactive. */
 .contact-btn:not(a){cursor:default}
 .contact-btn:not(a):hover{background:rgba(255,255,255,.04);color:inherit;border-color:rgba(255,255,255,.52)}
+.contact-actions{gap:28px}
